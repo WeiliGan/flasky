@@ -28,3 +28,9 @@
     {% block page_content %}{% endblock %}
 </div>
 {% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}" type="x-icon">
+<link rel="icon" href="{{ url_for('static', filename='image/favicon.icon') }}" type="x-icon">
+{% endblock %}
