@@ -1,24 +1,14 @@
-from flask import Flask
-from flask import request
-from flask import make_response
-from flask import redirect
-from flask import abort
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+bootstarp = Bootstrap(app)
 
-# @app.route('/')
-# def index():
-#     response = make_response('<h1>This is document carries a cookie!</h1>')
-#     response.set_cookie('answer', '42')
-#     return response
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-# @app.route('/')
-# def index():
-#     return redirect('http://www.example.com')
-
-@app.route('/user/<id>')
-def get_user(id):
-    user = load_user(id)
-    if not user:
-        abort(404)
-    return '<h1>Hello, {}!</h1>'.format(user.name)
+@app.route('/user/<name>')
+def user(name):
+    # return render_template('user.html', name=name)
+    return render_template('user.html', name=name)
